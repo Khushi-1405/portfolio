@@ -1,91 +1,97 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const mainNav = document.querySelector('.main-nav');
-    const subNav = document.querySelector('.sub-nav');
-    const heroSection = document.querySelector('.hero-section');
-    const heroHeight = heroSection.offsetHeight;
+<script>
+document.addEventListener("DOMContentLoaded", () => {
 
-    // --- 1. Sticky/Dynamic Navigation ---
-    // The design shows one header on the hero and a slightly different one sticking 
-    // to the top on scroll. We can achieve this by showing/hiding the two navs.
+  /* ================================
+     1. STICKY NAVIGATION
+  ================================= */
+  const mainNav = document.querySelector(".main-nav");
+  const subNav = document.querySelector(".sub-nav");
+  const heroSection = document.querySelector(".hero-section");
 
-    function handleScroll() {
-        if (window.scrollY > heroHeight - 80) { // -80 for nav height offset
-            // When user scrolls past the hero section
-            subNav.style.position = 'fixed';
-            subNav.style.top = '0';
-            subNav.style.backgroundColor = 'var(--color-dark)';
-            mainNav.style.opacity = '0';
-            mainNav.style.pointerEvents = 'none';
-        } else {
-            // When user is in the hero section
-            subNav.style.position = 'relative'; // Or 'absolute' depending on layout
-            mainNav.style.opacity = '1';
-            mainNav.style.pointerEvents = 'auto';
-        }
+  const heroHeight = heroSection ? heroSection.offsetHeight : 0;
+
+  function handleScroll() {
+    if (window.scrollY > heroHeight - 80) {
+      subNav.style.position = "fixed";
+      subNav.style.top = "0";
+      subNav.style.width = "100%";
+      subNav.style.zIndex = "1000";
+      mainNav.style.opacity = "0";
+      mainNav.style.pointerEvents = "none";
+    } else {
+      subNav.style.position = "relative";
+      mainNav.style.opacity = "1";
+      mainNav.style.pointerEvents = "auto";
     }
+  }
 
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Check on load
+  window.addEventListener("scroll", handleScroll);
+  handleScroll();
 
-    // --- 2. Smooth Scroll for Navigation Links (Basic JS approach) ---
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            document.querySelector(targetId).scrollIntoView({
-                behavior: 'smooth'
-            });
-        });
+
+  /* ================================
+     2. SMOOTH SCROLL
+  ================================= */
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener("click", e => {
+      e.preventDefault();
+      document.querySelector(link.getAttribute("href"))
+        ?.scrollIntoView({ behavior: "smooth" });
     });
+  });
 
-    // --- 3. Dynamic Section Loading (Blueprint for Full-Stack) ---
-    // In a full-stack app, this is where you would fetch data:
 
-    /* async function loadPortfolioData() {
-        try {
-            const response = await fetch('/api/portfolio'); // Backend endpoint
-            const data = await response.json();
-            
-            // Logic to dynamically populate the timeline items, skills, etc.
-            // Example: data.experience.forEach(item => { ... append HTML ... });
+  /* ================================
+     3. GOOGLE FORM SUBMIT HANDLER
+  ================================= */
+  const form = document.getElementById("contactForm");
+  const iframe = document.querySelector("iframe[name='hidden_iframe']");
+  let submitted = false;
 
-        } catch (error) {
-            console.error('Failed to load portfolio data:', error);
-        }
-    }
+  // Animated success notification
+  const toast = document.createElement("div");
+  toast.innerHTML = "✅ Form submitted successfully!";
+  Object.assign(toast.style, {
+    position: "fixed",
+    top: "20px",
+    right: "20px",
+    background: "#22c55e",
+    color: "#fff",
+    padding: "14px 22px",
+    borderRadius: "10px",
+    fontWeight: "600",
+    boxShadow: "0 12px 30px rgba(0,0,0,0.25)",
+    transform: "translateX(120%)",
+    opacity: "0",
+    transition: "all 0.5s ease",
+    zIndex: "9999"
+  });
 
-    loadPortfolioData();
-    */
+  document.body.appendChild(toast);
+
+  form.addEventListener("submit", () => {
+    submitted = true;
+  });
+
+  // Detect Google Form submission completion
+  iframe.onload = () => {
+    if (!submitted) return;
+
+    // Reset form
+    form.reset();
+
+    // Show notification
+    toast.style.transform = "translateX(0)";
+    toast.style.opacity = "1";
+
+    // Hide after 3s
+    setTimeout(() => {
+      toast.style.transform = "translateX(120%)";
+      toast.style.opacity = "0";
+    }, 3000);
+
+    submitted = false;
+  };
+
 });
-
-// --- 4. Contact Form Submission Handler ---
-const contactForm = document.querySelector('.contact-form');
-
-contactForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    
-    const formData = new FormData(contactForm);
-    const data = Object.fromEntries(formData.entries());
-
-    try {
-        // This endpoint MUST be created in your Node.js/Express backend (server.js)
-        const response = await fetch('/api/contact', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        });
-
-        if (response.ok) {
-            alert('Message sent successfully! I will get back to you soon.');
-            contactForm.reset();
-        } else {
-            alert('Failed to send message. Please try again or email me directly.');
-        }
-
-    } catch (error) {
-        console.error('Submission error:', error);
-        alert('An error occurred. Please check your connection.');
-    }
-});
+</script>

@@ -17,8 +17,8 @@
             <ul>
                 <li><a href="#about">About me</a></li>
                 <li><a href="#resume">Resume</a></li>
-                <li><a href="#work">Work</a></li>
-                <li><button class="btn-contact">Get In Touch</button></li>
+                <li><a href="work.html">Work</a></li>
+                <li><a href="#contact"> <button class="btn-contact">Get In Touch</button></li></a>
             </ul>
         </nav>
 
@@ -43,8 +43,8 @@
             <ul>
                 <li><a href="#about">About me</a></li>
                 <li><a href="#resume">Resume</a></li>
-                <li><a href="#work">Work</a></li>
-                <li><button class="btn-contact">Get In Touch</button></li>
+                <li><a href="work.html">Work</a></li>
+                <li><a href="#contact"><button class="contact-form">Get In Touch</button></li></a>
             </ul>
         </nav>
 
@@ -52,9 +52,10 @@
             <div class="text-area">
                 <h2>Hello, <br> I'm Khushi !</h2>
                 <p>I am a Web Developer based in New Delhi with experience in Data Science, Machine Learning and content
-                    creation experience. I am currently focusing on a full-time position in Web & Development, Machine Learning 
+                    creation experience. I am currently focusing on a full-time position in Web & Development, Machine
+                    Learning
                     Project Management.</p>
-                <a href="https://linkedin.com/in/han-nnb" target="_blank" class="btn-linkedin">
+                <a href="https://linkedin.com/in/khushi-dubey-916b84221" target="_blank" class="btn-linkedin">
                     <span class="icon">Q</span> www.linkedin.com/in/khushi-dubey-916b84221
                 </a>
             </div>
@@ -64,8 +65,19 @@
                 </div>
                 <div class="contact-box">
                     <h3>Contact</h3>
-                    <p>♥ Uttam Nagar, New Delhi, India</p>
-                    <p>✉ dubeykhushi522@gmail.com</p>
+
+                    <a href="https://www.google.com/maps/search/?api=1&query=No%2C+223-A+Portion+Block-D+F%2FF+MOHAN+GAREN%2C+UTTAM+NAGAR+-+NEAR+POST.+OFFIVE+NEW+DELHI+(laal+chowk%2C+gurudwara+road)"
+                        target="_blank" class="flex items-start gap-3 text-sm hover:opacity-80 transition">
+
+                        <span class="text-blue-400">📍</span>
+                        <p>♥ No. 223-A, Mohan Garden, Uttam Nagar – Near Post Office, New Delhi, India</p>
+
+                    </a>
+
+                    <div class="flex items-center gap-3 text-sm">
+                    <span class="text-blue-400">📧</span>
+                    <a href="mailto:ubeykhushi522@gmail.com" class="hover:text-white">dubeykhushi522@gmail.com</a>
+                </div>
                     <p>📞 91 53 85 72 32</p>
                 </div>
             </div>
@@ -95,7 +107,8 @@
 
                         <div class="timeline-item">
                             <span class="year">✦ 2024</span>
-                            <p>Python & Web Developer Intern <br> Experience in web development using Python in Centre for Railways Information Systems, New Delhi</p>
+                            <p>Python & Web Developer Intern <br> Experience in web development using Python in Centre
+                                for Railways Information Systems, New Delhi</p>
                         </div>
 
                         <div class="timeline-item">
@@ -120,9 +133,12 @@
                         <h4>Software Skills</h4>
                         <ul class="skill-icons">
                             <li>Machine Learning</li>
-                            <li>AI</li>
+                            
                             <li>Content Creation</li>
                             <li>Web Development</li>
+                            <li>Data Science & Analytics</li>
+                            <li>Data Visualization</li>
+                            <li>Excel</li>
                             <li>Editing</li>
                         </ul>
                     </div>
@@ -155,17 +171,40 @@
                                 <p>✉ <b>Email: </b> dubekhushi522@gmail.com</p>
                                 <p>📞 <b>Phone:</b> +91 91 53 85 72 32</p>
                                 <p>💬 <b>LinkedIn:</b> www.linkedin.com/in/khushi-dubey-916b84221</p>
+                                <p> <!-- whatsapp  -->
+                                    <a href="https://wa.me/9153857232?text=Hello!%20I%20have%20a%20question."
+                                        class="whatsapp-button" target="_blank" rel="noopener noreferrer">
+                                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+                                            alt="Chat with us">
+                                    </a>
+                                </p>
                             </div>
                         </div>
 
-                        <form class="contact-form">
-                            <input type="text" name="name" placeholder="Your Name" required>
-                            <input type="email" name="email" placeholder="Your Email" required>
-                            <textarea name="message" rows="5" placeholder="Tell me about your project..."
-                                required></textarea>
+                        <form class="contact-form"
+                            action="https://docs.google.com/forms/d/e/1FAIpQLSeCo7af174Z6YI5PUydJMsufZwMLYEPFLHd6vP_YrEn8bHGFg/formResponse?embedded=true"
+                            method="POST" target="hidden_iframe" onsubmit="submitted=true;">
+
+                            <input type="text" name="entry.1828497721" placeholder="Your Name" required>
+                            <input type="email" name="entry.594349870" placeholder="Your Email" required>
+                            <textarea name="entry.1578224110" placeholder="Your Message" required></textarea>
+
                             <button type="submit" class="btn-submit">Send Message</button>
                         </form>
-                    </div>
+                        <div id="successBox" class="success-box">
+                            <div class="checkmark">✔</div>
+                            <p>Message sent successfully!</p>
+                        </div>
+
+
+                        <iframe name="hidden_iframe" style="display:none;" onload="showSuccessMessage()">
+                        </iframe>
+
+                        <p id="success-msg" style="display:none; color:#2c2f33; font-weight:600;">
+                            ✅ Thank you! Your message has been sent successfully.
+                        </p>
+
+
                 </section>
 
                 <footer class="site-footer">

@@ -1,14 +1,18 @@
-/* Custom Properties */
+/* =========================
+   ROOT VARIABLES
+========================= */
 :root {
     --color-dark: #2c2f33;
-    --color-primary: #f2c94c; /* The rich yellow/orange */
-    --color-secondary: #f4f4f4; /* Off-white for contrast */
+    --color-primary: #f2c94c;
+    --color-secondary: #f4f4f4;
     --color-text: #f4f4f4;
     --font-heading: 'Poppins', sans-serif;
     --font-body: 'Poppins', sans-serif;
 }
 
-/* Reset and Base Styles */
+/* =========================
+   RESET & BASE STYLES
+========================= */
 * {
     margin: 0;
     padding: 0;
@@ -17,14 +21,14 @@
 
 body {
     font-family: var(--font-body);
-    color: var(--color-text);
     background-color: var(--color-dark);
+    color: var(--color-text);
     line-height: 1.6;
 }
 
 a {
-    color: var(--color-text);
     text-decoration: none;
+    color: inherit;
 }
 
 ul {
@@ -36,101 +40,104 @@ h1, h2, h3 {
     font-weight: 700;
 }
 
-/* --- Navigation --- */
-.main-nav, .sub-nav {
+/* =========================
+   NAVIGATION
+========================= */
+.main-nav,
+.sub-nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px 5%;
-    position: fixed; /* For the main design */
     width: 100%;
     z-index: 100;
 }
 
+.main-nav {
+    position: fixed;
+    top: 0;
+}
+
 .sub-nav {
-    background-color: var(--color-dark); /* Sticks to the top after hero */
-    position: relative; /* Example for the second nav on the design */
+    background-color: var(--color-dark);
+    position: relative;
 }
 
 .logo {
-    font-weight: 600;
     font-size: 1.2rem;
+    font-weight: 600;
 }
 
-.main-nav ul, .sub-nav ul {
+.main-nav ul,
+.sub-nav ul {
     display: flex;
     gap: 30px;
+    align-items: center;
 }
 
 .btn-contact {
     background-color: var(--color-primary);
     color: var(--color-dark);
-    padding: 10px 20px;
     border: none;
-    cursor: pointer;
-    font-weight: 600;
+    padding: 10px 20px;
     border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
 }
 
-/* --- Hero Section (The Complex Design) --- */
+/* =========================
+   HERO SECTION
+========================= */
 .hero-section {
     min-height: 100vh;
-    background-color: #555845; /* Dark olive color from design */
+    background-color: #555845;
+    padding-top: 80px;
     overflow: hidden;
-    padding-top: 80px; /* Space for fixed nav */
 }
 
 .hero-content {
-    position: relative;
     padding: 5%;
+    position: relative;
 }
 
 .hero-text-box {
-    /* Mimicking the overlapping text */
     position: relative;
     min-height: 600px;
 }
 
 .title-overlay {
     position: absolute;
-    top: 50px;
+    top: 40px;
     left: 0;
-    font-size: 15vw; /* Massive font size */
+    font-size: 15vw;
     font-weight: 900;
-    color: rgba(255, 255, 255, 0.05); /* Very transparent white */
-    line-height: 0.9;
+    color: rgba(255, 255, 255, 0.05);
     pointer-events: none;
-    z-index: 1;
 }
 
 .title-text {
     position: absolute;
-    top: 150px; /* Adjust as needed */
+    top: 150px;
     left: 40%;
-    z-index: 2;
 }
 
 .title-text h1 {
     font-size: 5vw;
-    line-height: 1;
-    color: var(--color-text);
 }
 
 .scroll-down {
     position: absolute;
-    bottom: 50px;
+    bottom: 40px;
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
-    cursor: pointer;
 }
-/* ... More detailed CSS for the Hero's yellow box, image position, and responsiveness ... */
 
-
-/* --- About Section --- */
+/* =========================
+   ABOUT SECTION
+========================= */
 .about-section {
-    background-color: var(--color-dark);
-    padding: 40px 5%;
+    padding: 50px 5%;
 }
 
 .about-content {
@@ -141,115 +148,139 @@ h1, h2, h3 {
 
 .text-area h2 {
     font-size: 4rem;
-    color: var(--color-secondary);
     margin-bottom: 20px;
 }
 
 .btn-linkedin {
     display: inline-block;
-    background-color: #d17800; /* Darker orange/red in the design */
-    color: var(--color-text);
+    background-color: #d17800;
     padding: 10px 20px;
-    margin-top: 20px;
     border-radius: 20px;
+    margin-top: 20px;
 }
-/* ... Detailed styling for the image circle and contact box ... */
 
-/* --- Resume Section (The Yellow/Dark Grid) --- */
+/* =========================
+   IMAGE SECTION
+========================= */
+
+.profile-photo-box {
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 6px solid var(--color-primary);
+}
+
+.profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* =========================
+   RESUME SECTION
+========================= */
 .resume-section {
     padding: 50px 5%;
-    background-color: var(--color-dark);
 }
 
 .resume-grid {
     display: grid;
-    grid-template-columns: 2fr 1.5fr; /* Left is wider than right */
+    grid-template-columns: 2fr 1.5fr;
     gap: 30px;
 }
 
-.left-column {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-}
-
-.education-box {
-    background-color: var(--color-dark); /* Dark box */
-    padding: 40px;
-    border-radius: 10px;
-}
-
-.experience-box {
-    background-color: var(--color-primary); /* Yellow box */
-    color: var(--color-dark);
-    padding: 40px;
-    border-radius: 10px;
-}
-.experience-box h3, .experience-box p {
-    color: var(--color-dark);
-}
-
+.left-column,
 .right-column {
     display: flex;
     flex-direction: column;
     gap: 30px;
 }
 
-.skills-box {
-    background-color: var(--color-dark); /* Dark box */
+.education-box,
+.skills-box,
+.language-hobbies-box {
+    background-color: var(--color-dark);
     padding: 40px;
     border-radius: 10px;
 }
-/* H2 (RESUME) is huge and transparent/light */
+
+.experience-box {
+    background-color: var(--color-primary);
+    color: var(--color-dark);
+    padding: 40px;
+    border-radius: 10px;
+}
+
+.experience-box h3,
+.experience-box p {
+    color: var(--color-dark);
+}
+
+.skills-box {
+    position: relative;
+}
+
 .skills-box h2 {
     font-size: 8rem;
     color: rgba(255, 255, 255, 0.05);
-    line-height: 1;
-    position: absolute; /* Place it behind the text */
-    z-index: 1;
-    margin-top: -30px;
+    position: absolute;
+    top: -30px;
+    left: 0;
 }
-.skills-box h3 {
-    position: relative; /* Bring H3 and content forward */
+
+.skills-box h3,
+.skill-group {
+    position: relative;
     z-index: 2;
 }
 
-/* --- Responsiveness (Example) --- */
-@media (max-width: 1024px) {
-    .resume-grid {
-        grid-template-columns: 1fr; /* Stack columns */
-    }
+/* =========================
+    WHATSAPP BUTTON
+========================= */
+
+/* WhatsApp floating button - pea size */
+.whatsapp-button {
+    position: fixed;          /* optional: remove if not floating */
+    bottom: 20px;             /* optional */
+    right: 20px;              /* optional */
+    width: 22px;              /* pea-size */
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
 }
 
-@media (max-width: 768px) {
-    .about-content {
-        flex-direction: column; /* Stack about content */
-    }
-    .text-area h2 {
-        font-size: 3rem;
-    }
-    .main-nav ul, .sub-nav ul {
-        display: none; /* Hide for mobile nav menu */
-    }
-    .hero-text-box {
-        min-height: 400px;
-    }
+.whatsapp-button img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
-/* --- Contact Me Section --- */
+
+.whatsapp-button:hover {
+    transform: scale(1.1);
+    transition: 0.2s ease;
+}
+
+
+
+/* =========================
+   CONTACT SECTION
+========================= */
 .contact-section {
-    background-color: var(--color-dark);
     padding: 80px 5%;
 }
 
 .contact-box-container {
     display: flex;
-    gap: 50px;
-    align-items: center;
-    background-color: var(--color-primary); /* Yellow background for high contrast */
-    color: var(--color-dark);
+    gap: 40px;
+    background-color: var(--color-primary);
     padding: 60px;
-    border-radius: 10px;
+    border-radius: 12px;
+    color: var(--color-dark);
+    align-items: center;
 }
 
 .contact-text-area {
@@ -257,87 +288,196 @@ h1, h2, h3 {
     max-width: 50%;
 }
 
-.contact-text-area h2 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    color: var(--color-dark); /* Ensure text is dark on yellow */
-}
-
-.contact-text-area p {
-    margin-bottom: 30px;
-    font-size: 1.1rem;
-}
-
-.contact-info p {
-    line-height: 1.8;
-}
-
-/* --- Contact Form Styling --- */
 .contact-form {
     flex: 1;
     display: flex;
     flex-direction: column;
     gap: 15px;
-    background-color: var(--color-dark); /* Dark form on yellow background */
-    padding: 30px;
+    background-color: var(--color-primary);
+    color: var(--color-dark);
+    font-weight: 600;
+    cursor: pointer;
+    margin: 20px;
+    padding: 10px;
     border-radius: 8px;
 }
 
 .contact-form input,
 .contact-form textarea {
     padding: 15px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    background-color: rgba(0, 0, 0, 0.1);
-    color: var(--color-text);
     border-radius: 5px;
-    font-family: inherit;
-    font-size: 1rem;
-}
-
-.contact-form input:focus,
-.contact-form textarea:focus {
-    outline: none;
-    border-color: var(--color-primary);
-    box-shadow: 0 0 0 2px rgba(242, 201, 76, 0.5);
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(0,0,0,0.1);
+    color: var(--color-text);
 }
 
 .btn-submit {
     background-color: var(--color-primary);
     color: var(--color-dark);
-    padding: 15px 20px;
+    padding: 15px;
     border: none;
-    cursor: pointer;
     font-weight: 700;
-    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+.submit{
+    background-color: var(--color-primary);
+    color: var(--color-dark);
+    border: none;
+    padding: 10px 20px;
     border-radius: 5px;
-    transition: background-color 0.3s;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 8px;
 }
 
-.btn-submit:hover {
-    background-color: #e0b442;
+.success-box {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #22c55e;
+  color: #fff;
+  padding: 16px 22px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  transform: translateX(120%);
+  opacity: 0;
+  transition: all 0.5s ease;
+  z-index: 9999;
 }
 
-/* --- Basic Footer --- */
+.success-box.show {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.checkmark {
+  width: 32px;
+  height: 32px;
+  background: #16a34a;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+  animation: pop 0.6s ease;
+}
+
+@keyframes pop {
+  0% { transform: scale(0); }
+  70% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+/* =========================
+   FOOTER
+========================= */
 .site-footer {
-    text-align: center;
-    padding: 20px 0;
+    max-width: 1400px;        /* optional: keeps it clean on large screens */
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 40px 8vw;        /* horizontal expansion */
+    box-sizing: border-box;
     background-color: #222;
-    font-size: 0.9rem;
     color: #aaa;
+    font-size: 0.9rem;
 }
 
+/* ======================================================
+   RESPONSIVE MEDIA QUERIES
+====================================================== */
 
-/* --- Responsiveness Update for Contact Section --- */
-@media (max-width: 900px) {
+/* LARGE SCREENS */
+@media (min-width: 1440px) {
+    .hero-content,
+    .about-content,
+    .resume-grid,
+    .contact-box-container {
+        max-width: 1300px;
+        margin: auto;
+    }
+}
+
+/* TABLETS */
+@media (max-width: 1024px) {
+    .resume-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-content {
+        flex-direction: column;
+    }
+
+    .title-text {
+        position: relative;
+        left: 0;
+        top: 0;
+        margin-top: 120px;
+    }
+
+    .skills-box h2 {
+        position: relative;
+        font-size: 5rem;
+    }
+
     .contact-box-container {
         flex-direction: column;
-        padding: 40px;
         text-align: center;
     }
+
     .contact-text-area {
         max-width: 100%;
     }
-    .contact-info {
-        text-align: left; /* Keep contact info readable */
+}
+
+/* MOBILES */
+@media (max-width: 768px) {
+
+    .main-nav ul,
+    .sub-nav ul {
+        display: none;
+    }
+
+    .hero-text-box {
+        min-height: auto;
+    }
+
+    .title-overlay {
+        font-size: 28vw;
+    }
+
+    .title-text h1 {
+        font-size: 2.2rem;
+    }
+
+    .text-area h2 {
+        font-size: 2.2rem;
+        text-align: center;
+    }
+
+    .education-box,
+    .experience-box,
+    .skills-box,
+    .language-hobbies-box {
+        padding: 25px;
+    }
+
+    .skills-box h2 {
+        font-size: 3.5rem;
+    }
+
+    .contact-box-container {
+        padding: 30px;
+    }
+
+    .site-footer {
+        font-size: 0.8rem;
+
     }
 }
